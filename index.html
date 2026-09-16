@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="https://cdn.imgurl.ir/uploads/s09750_logo.png">
+<title>حسابداری گروه مردمی مودّت اردبیل</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+:root {
+    --bg: #f7f7f8;
+    --card: #fff;
+    --text: #202020;
+    --muted: #777;
+    --primary: #ef394e;
+    --primary-dark: #d92d42;
+    --orange: #ff9f1c;
+    --orange-dark: #e88b00;
+    --border: #e6e6e6;
+    --shadow: 0 8px 28px rgba(0,0,0,.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+    font-family: "Vazirmatn", "B Nazanin", "Tahoma", sans-serif;
+    background: linear-gradient(180deg, #fff 0%, #f7f7f8 45%, #f3f3f4 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    line-height: 1.6;
+}
+.float-icons {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+}
+.float-icon {
+    position: absolute; font-size: 20px; opacity: 0.22; color: var(--primary);
+    animation: floatUp linear infinite; user-select: none;
+}
+@keyframes floatUp {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.28; }
+    90% { opacity: 0.28; }
+    100% { transform: translateY(-10vh) rotate(25deg); opacity: 0; }
+}
+.app-wrapper {
+    max-width: 1200px; width: 100%; padding: 16px 14px 50px; margin: 0 auto; position: relative; z-index: 1;
+}
+
+/* ===== لاگین ===== */
+.login-box {
+    max-width: 380px; margin: 80px auto; background: #fff; border-radius: 20px;
+    padding: 32px 28px; box-shadow: var(--shadow); border: 1px solid #e8e8e8; text-align: center;
+}
+.login-box img { width: 72px; height: 72px; margin-bottom: 12px; border-radius: 14px; }
+.login-box h1 { font-size: 1.25rem; font-weight: 800; margin-bottom: 6px; color: var(--primary); }
+.login-box p { font-size: .85rem; color: var(--muted); margin-bottom: 22px; }
+.login-box input {
+    width: 100%; padding: 12px 14px; border: 1px solid #ddd; border-radius: 12px;
+    font-family: inherit; font-size: .95rem; margin-bottom: 12px; outline: none;
+}
+.login-box input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(239,57,78,.1); }
+.btn-login {
+    width: 100%; padding: 13px; border: 0; border-radius: 12px; background: linear-gradient(135deg, #ef394e, #d92d42);
+    color: #fff; font-family: inherit; font-size: 1rem; font-weight: 800; cursor: pointer;
+    box-shadow: 0 8px 20px rgba(239,57,78,.25);
+}
+.btn-login:hover { filter: brightness(1.05); }
+.login-error { color: #d32f2f; font-size: .85rem; margin-top: 10px; display: none; }
+
+/* ===== هدر ===== */
+.top-bar {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-bottom: 16px; align-items: stretch;
+}
+.title-box {
+    position: relative; overflow: hidden; border-radius: 18px; padding: 14px 18px; flex: 1 1 420px;
+    display: flex; align-items: center; justify-content: center; color: #fff;
+    background: linear-gradient(135deg, #ef394e 0%, #d81f3b 55%, #b91530 100%);
+    box-shadow: 0 10px 28px rgba(239,57,78,.25);
+}
+.site-logo { width: 56px; height: 56px; object-fit: contain; margin-left: 12px; border-radius: 12px; }
+.title-box::before {
+    content: ""; position: absolute; width: 140px; height: 140px; border-radius: 50%;
+    background: rgba(255,255,255,.12); top: -80px; right: -50px;
+}
+.title-box::after {
+    content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%;
+    background: linear-gradient(180deg, #ff9f1c 0%, #ef394e 50%, #facc15 100%);
+}
+.title-text { position: relative; z-index: 1; font-size: 1.2rem; font-weight: 800; text-align: center; }
+.info-box {
+    flex: 1 1 220px; border-radius: 16px; padding: 12px 16px; background: #fff;
+    border: 1px solid #e8e8e8; box-shadow: var(--shadow); font-size: .85rem;
+}
+.info-row { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid #f1f1f1; }
+.info-row:last-child { border-bottom: 0; }
+.info-row span:last-child { font-weight: 800; color: var(--primary); }
+
+/* ===== محصولات ===== */
+.section-card {
+    background: #fff; border: 1px solid #e8e8e8; border-radius: 16px; padding: 14px 16px;
+    box-shadow: var(--shadow); margin-bottom: 14px;
+}
+.section-card h2 {
+    font-size: 1rem; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+}
+.section-card h2::before {
+    content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--primary);
+    box-shadow: 0 0 0 4px rgba(239,57,78,.12);
+}
+.product-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px;
+}
+.product-card {
+    border: 1px solid #e8e8e8; border-radius: 12px; padding: 10px 12px; background: #fff;
+    display: flex; flex-direction: column; gap: 8px; transition: .2s;
+}
+.product-card:hover { border-color: rgba(239,57,78,.35); box-shadow: 0 6px 16px rgba(0,0,0,.08); }
+.product-name { font-size: .88rem; font-weight: 600; line-height: 1.4; min-height: 38px; }
+.product-actions { display: flex; align-items: center; gap: 6px; justify-content: space-between; }
+.qty-control { display: flex; align-items: center; gap: 5px; }
+.btn {
+    border: 0; border-radius: 9px; font-family: inherit; font-weight: 700; cursor: pointer;
+    transition: .15s;
+}
+.btn-small {
+    background: #fff; color: #333; min-width: 30px; height: 30px; padding: 0;
+    border: 1px solid #ddd; font-size: 1rem; display: flex; align-items: center; justify-content: center;
+}
+.btn-small:hover { border-color: var(--primary); color: var(--primary); }
+.product-quantity {
+    min-width: 32px; height: 30px; display: flex; align-items: center; justify-content: center;
+    border: 1px solid #e0e0e0; border-radius: 8px; background: #fff; font-weight: 800; font-size: .9rem;
+}
+.btn-orange {
+    width: 30px; height: 30px; background: linear-gradient(135deg, #ff9f1c, #e88b00);
+    color: #fff; border-radius: 8px; font-size: .85rem; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 3px 10px rgba(255,159,28,.3);
+}
+.btn-orange:hover { filter: brightness(1.08); transform: scale(1.05); }
+.btn-orange.hidden { display: none; }
+
+/* دکمه ثبت نهایی */
+.fixed-bottom {
+    position: sticky; bottom: 14px; z-index: 50; margin-top: 18px;
+}
+.btn-submit {
+    width: 100%; padding: 14px; border: 0; border-radius: 14px;
+    background: linear-gradient(135deg, #ef394e, #d92d42); color: #fff;
+    font-family: inherit; font-size: 1.05rem; font-weight: 800; cursor: pointer;
+    box-shadow: 0 10px 24px rgba(239,57,78,.28);
+}
+.btn-submit:disabled { background: #bbb; cursor: not-allowed; box-shadow: none; }
+.btn-submit:hover:not(:disabled) { filter: brightness(1.05); }
+
+.status-msg {
+    text-align: center; margin-top: 10px; font-size: .9rem; font-weight: 600;
+    min-height: 24px;
+}
+.status-ok { color: #16a34a; }
+.status-err { color: #d32f2f; }
+
+@media (max-width: 600px) {
+    .product-grid { grid-template-columns: 1fr 1fr; }
+    .title-text { font-size: 1.05rem; }
+    .site-logo { width: 46px; height: 46px; }
+}
+</style>
+</head>
+<body>
+<div class="float-icons" id="floatIcons"></div>
+
+<!-- ===== صفحه ورود ===== -->
+<div id="loginPage">
+    <div class="login-box">
+        <img src="https://cdn.imgurl.ir/uploads/s09750_logo.png" alt="لوگو">
+        <h1>حسابداری مودّت اردبیل</h1>
+        <p>ورود به سیستم ثبت فروش</p>
+        <input type="text" id="username" placeholder="نام کاربری" autocomplete="username">
+        <input type="password" id="password" placeholder="رمز عبور" autocomplete="current-password">
+        <button class="btn-login" onclick="doLogin()">ورود</button>
+        <div class="login-error" id="loginError">نام کاربری یا رمز عبور اشتباه است</div>
+    </div>
+</div>
+
+<!-- ===== صفحه اصلی ===== -->
+<div id="mainPage" style="display:none;">
+    <div class="app-wrapper">
+        <div class="top-bar">
+            <div class="title-box">
+                <img src="https://cdn.imgurl.ir/uploads/s09750_logo.png" alt="لوگو" class="site-logo">
+                <div class="title-text">حسابداری گروه مردمی مودّت اردبیل</div>
+            </div>
+            <div class="info-box">
+                <div class="info-row"><span>تاریخ:</span><span id="liveDate"></span></div>
+                <div class="info-row"><span>ساعت:</span><span id="liveTime"></span></div>
+                <div class="info-row"><span>کاربر:</span><span>یا زینب</span></div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>لیست کالاها (ثبت فروش)</h2>
+            <div class="product-grid" id="productGrid"></div>
+        </div>
+
+        <div class="fixed-bottom">
+            <button class="btn-submit" id="btnSubmit" disabled onclick="submitSales()">ثبت اطلاعات فروخته‌شده</button>
+            <div class="status-msg" id="statusMsg"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+// ========== انیمیشن ==========
+function createFloatIcons() {
+    const container = document.getElementById("floatIcons");
+    const icons = ["٪", "🛒", "📦", "🏷️", "🛍️", "💰", "🎁", "🧈", "🥛", "🍰"];
+    for (let i = 0; i < 18; i++) {
+        const el = document.createElement("div");
+        el.className = "float-icon";
+        el.textContent = icons[i % icons.length];
+        el.style.left = Math.random() * 94 + "%";
+        const duration = 10 + Math.random() * 8;
+        el.style.animationDuration = duration + "s";
+        el.style.animationDelay = (-Math.random() * duration) + "s";
+        el.style.fontSize = (15 + Math.random() * 16) + "px";
+        container.appendChild(el);
+    }
+}
+createFloatIcons();
+
+// ========== محصولات (۴۰ عدد) ==========
+const products = [
+    "روغن آفتابگردان ۱.۸ لیتری", "روغن سرخ‌کردنی ۱.۸ لیتری", "روغن ۱.۳۵ لیتری",
+    "ماست پرچرب کاله", "ماست پرچرب پگاه", "ماست پرچرب میهن", "ماست کم‌چرب",
+    "کلوچه سنتی", "کیک شکلاتی", "کیک وانیلی", "بیسکویت مادر",
+    "نان سنگک", "نان بربری", "نان لواش",
+    "برنج طارم ۱۰ کیلویی", "شکر ۱ کیلویی", "چای گلستان", "قهوه",
+    "آب معدنی ۱.۵ لیتری", "نوشابه خانواده", "دوغ بطری",
+    "پنیر سفید ۴۰۰ گرمی", "کره ۱۰۰ گرمی", "تخم مرغ شانه ۳۰ تایی",
+    "مرغ کامل", "گوشت گوسفندی", "سیب‌زمینی", "پیاز", "گوجه‌فرنگی", "خیار",
+    "موز", "سیب", "پرتقال", "هویج",
+    "لوبیا چیتی", "عدس", "نخود", "لپه", "ماکارونی", "رب گوجه",
+    "سس مایونز", "نمک", "فلفل سیاه", "زعفران گرمساری", "عسل طبیعی",
+    "مربا آلبالو", "شکلات تخته‌ای", "پفک", "چیپس"
+];
+
+// تعداد واقعی حدود ۴۸ تا است، برای اطمینان همه را می‌آوریم (اگر کمتر خواستی حذف کن)
+
+const cart = {}; // id → qty
+
+// ========== لاگین ==========
+function doLogin() {
+    const u = document.getElementById("username").value.trim();
+    const p = document.getElementById("password").value.trim();
+    if (u === "یا زینب" && p === "یا زینب") {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("mainPage").style.display = "block";
+        renderProducts();
+        updateClock();
+        setInterval(updateClock, 1000);
+    } else {
+        document.getElementById("loginError").style.display = "block";
+    }
+}
+
+// اینتر هم کار کند
+document.addEventListener("keydown", e => {
+    if (e.key === "Enter" && document.getElementById("loginPage").style.display !== "none") {
+        doLogin();
+    }
+});
+
+// ========== ساعت ==========
+function updateClock() {
+    const now = new Date();
+    document.getElementById("liveDate").innerText = now.toLocaleDateString("fa-IR");
+    document.getElementById("liveTime").innerText = now.toLocaleTimeString("fa-IR", {hour: "2-digit", minute: "2-digit"});
+}
+
+// ========== رندر محصولات ==========
+function renderProducts() {
+    const grid = document.getElementById("productGrid");
+    grid.innerHTML = "";
+    products.forEach((name, idx) => {
+        const id = "p" + idx;
+        const qty = cart[id] || 0;
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+            <div class="product-name">${name}</div>
+            <div class="product-actions">
+                <div class="qty-control">
+                    <button class="btn btn-small" onclick="changeQty('${id}', -1)">−</button>
+                    <div class="product-quantity">${qty.toLocaleString("fa-IR")}</div>
+                    <button class="btn btn-small" onclick="changeQty('${id}', 1)">+</button>
+                </div>
+                <button class="btn btn-orange ${qty > 0 ? 'hidden' : ''}" onclick="quickAdd('${id}')" title="فروخته شد">■</button>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+    updateSubmitButton();
+}
+
+function changeQty(id, delta) {
+    let qty = (cart[id] || 0) + delta;
+    if (qty < 0) qty = 0;
+    if (qty === 0) delete cart[id];
+    else cart[id] = qty;
+    renderProducts();
+}
+
+function quickAdd(id) {
+    cart[id] = 1;
+    renderProducts();
+}
+
+function updateSubmitButton() {
+    const hasItems = Object.keys(cart).length > 0;
+    document.getElementById("btnSubmit").disabled = !hasItems;
+}
+
+// ========== ثبت فروش ==========
+const SHEET_API_URL = "YOUR_GOOGLE_SCRIPT_URL_HERE"; // بعد از دیپلوی اسکریپت اینجا بگذار
+
+async function submitSales() {
+    const btn = document.getElementById("btnSubmit");
+    const msg = document.getElementById("statusMsg");
+    if (Object.keys(cart).length === 0) return;
+
+    btn.disabled = true;
+    btn.textContent = "⏳ در حال ثبت...";
+    msg.className = "status-msg";
+    msg.textContent = "";
+
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString("fa-IR", {hour: "2-digit", minute: "2-digit"});
+    const dateStr = now.toLocaleDateString("fa-IR");
+
+    const items = [];
+    Object.keys(cart).forEach(id => {
+        const idx = parseInt(id.replace("p", ""));
+        items.push({ name: products[idx], qty: cart[id] });
+    });
+
+    const payload = {
+        time: timeStr,
+        date: dateStr,
+        items: items
+    };
+
+    try {
+        await fetch(SHEET_API_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(payload)
+        });
+
+        // ریست
+        for (let k in cart) delete cart[k];
+        renderProducts();
+        msg.className = "status-msg status-ok";
+        msg.textContent = "✅ با موفقیت ثبت شد";
+        btn.textContent = "ثبت اطلاعات فروخته‌شده";
+        setTimeout(() => { msg.textContent = ""; }, 4000);
+    } catch (err) {
+        console.error(err);
+        msg.className = "status-msg status-err";
+        msg.textContent = "❌ خطا در ثبت. اتصال اینترنت را بررسی کنید";
+        btn.disabled = false;
+        btn.textContent = "ثبت اطلاعات فروخته‌شده";
+    }
+}
+</script>
+</body>
+</html>
