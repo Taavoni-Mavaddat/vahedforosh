@@ -14,8 +14,6 @@
     --muted: #777;
     --primary: #ef394e;
     --primary-dark: #d92d42;
-    --orange: #ff9f1c;
-    --orange-dark: #e88b00;
     --border: #e6e6e6;
     --shadow: 0 8px 28px rgba(0,0,0,.08);
 }
@@ -28,131 +26,312 @@ body {
     color: var(--text);
     line-height: 1.6;
 }
+
+/* انیمیشن‌ها کاملاً زیر همه چیز */
 .float-icons {
-    position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
 }
 .float-icon {
-    position: absolute; font-size: 20px; opacity: 0.22; color: var(--primary);
-    animation: floatUp linear infinite; user-select: none;
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.18;
+    color: var(--primary);
+    animation: floatUp linear infinite;
+    user-select: none;
 }
 @keyframes floatUp {
-    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.28; }
-    90% { opacity: 0.28; }
+    0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.22; }
+    90%  { opacity: 0.22; }
     100% { transform: translateY(-10vh) rotate(25deg); opacity: 0; }
 }
+
 .app-wrapper {
-    max-width: 1200px; width: 100%; padding: 16px 14px 50px; margin: 0 auto; position: relative; z-index: 1;
+    max-width: 1200px;
+    width: 100%;
+    padding: 16px 14px 50px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10; /* بالاتر از انیمیشن */
 }
 
 /* ===== لاگین ===== */
 .login-box {
-    max-width: 380px; margin: 80px auto; background: #fff; border-radius: 20px;
-    padding: 32px 28px; box-shadow: var(--shadow); border: 1px solid #e8e8e8; text-align: center;
+    max-width: 380px;
+    margin: 80px auto;
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid #e8e8e8;
+    text-align: center;
+    position: relative;
+    z-index: 10;
 }
-.login-box img { width: 72px; height: 72px; margin-bottom: 12px; border-radius: 14px; }
-.login-box h1 { font-size: 1.25rem; font-weight: 800; margin-bottom: 6px; color: var(--primary); }
-.login-box p { font-size: .85rem; color: var(--muted); margin-bottom: 22px; }
+.login-box img {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 12px;
+    border-radius: 14px;
+}
+.login-box h1 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: var(--primary);
+}
+.login-box p {
+    font-size: .85rem;
+    color: var(--muted);
+    margin-bottom: 22px;
+}
 .login-box input {
-    width: 100%; padding: 12px 14px; border: 1px solid #ddd; border-radius: 12px;
-    font-family: inherit; font-size: .95rem; margin-bottom: 12px; outline: none;
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: .95rem;
+    margin-bottom: 12px;
+    outline: none;
 }
-.login-box input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(239,57,78,.1); }
+.login-box input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(239,57,78,.1);
+}
 .btn-login {
-    width: 100%; padding: 13px; border: 0; border-radius: 12px; background: linear-gradient(135deg, #ef394e, #d92d42);
-    color: #fff; font-family: inherit; font-size: 1rem; font-weight: 800; cursor: pointer;
+    width: 100%;
+    padding: 13px;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ef394e, #d92d42);
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
     box-shadow: 0 8px 20px rgba(239,57,78,.25);
 }
 .btn-login:hover { filter: brightness(1.05); }
-.login-error { color: #d32f2f; font-size: .85rem; margin-top: 10px; display: none; }
+.login-error {
+    color: #d32f2f;
+    font-size: .85rem;
+    margin-top: 10px;
+    display: none;
+}
 
 /* ===== هدر ===== */
 .top-bar {
-    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-bottom: 16px; align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+    align-items: stretch;
 }
 .title-box {
-    position: relative; overflow: hidden; border-radius: 18px; padding: 14px 18px; flex: 1 1 420px;
-    display: flex; align-items: center; justify-content: center; color: #fff;
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    padding: 14px 18px;
+    flex: 1 1 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
     background: linear-gradient(135deg, #ef394e 0%, #d81f3b 55%, #b91530 100%);
     box-shadow: 0 10px 28px rgba(239,57,78,.25);
 }
-.site-logo { width: 56px; height: 56px; object-fit: contain; margin-left: 12px; border-radius: 12px; }
+.site-logo {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    margin-left: 12px;
+    border-radius: 12px;
+}
 .title-box::before {
-    content: ""; position: absolute; width: 140px; height: 140px; border-radius: 50%;
-    background: rgba(255,255,255,.12); top: -80px; right: -50px;
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.12);
+    top: -80px;
+    right: -50px;
 }
 .title-box::after {
-    content: ""; position: absolute; left: 0; top: 0; width: 5px; height: 100%;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
     background: linear-gradient(180deg, #ff9f1c 0%, #ef394e 50%, #facc15 100%);
 }
-.title-text { position: relative; z-index: 1; font-size: 1.2rem; font-weight: 800; text-align: center; }
-.info-box {
-    flex: 1 1 220px; border-radius: 16px; padding: 12px 16px; background: #fff;
-    border: 1px solid #e8e8e8; box-shadow: var(--shadow); font-size: .85rem;
+.title-text {
+    position: relative;
+    z-index: 1;
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-align: center;
 }
-.info-row { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid #f1f1f1; }
+.info-box {
+    flex: 1 1 220px;
+    border-radius: 16px;
+    padding: 12px 16px;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    box-shadow: var(--shadow);
+    font-size: .85rem;
+}
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
 .info-row:last-child { border-bottom: 0; }
-.info-row span:last-child { font-weight: 800; color: var(--primary); }
+.info-row span:last-child {
+    font-weight: 800;
+    color: var(--primary);
+}
 
 /* ===== محصولات ===== */
 .section-card {
-    background: #fff; border: 1px solid #e8e8e8; border-radius: 16px; padding: 14px 16px;
-    box-shadow: var(--shadow); margin-bottom: 14px;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 16px;
+    padding: 14px 16px;
+    box-shadow: var(--shadow);
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 5;
 }
 .section-card h2 {
-    font-size: 1rem; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 .section-card h2::before {
-    content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--primary);
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--primary);
     box-shadow: 0 0 0 4px rgba(239,57,78,.12);
 }
 .product-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 10px;
 }
 .product-card {
-    border: 1px solid #e8e8e8; border-radius: 12px; padding: 10px 12px; background: #fff;
-    display: flex; flex-direction: column; gap: 8px; transition: .2s;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: .2s;
 }
-.product-card:hover { border-color: rgba(239,57,78,.35); box-shadow: 0 6px 16px rgba(0,0,0,.08); }
-.product-name { font-size: .88rem; font-weight: 600; line-height: 1.4; min-height: 38px; }
-.product-actions { display: flex; align-items: center; gap: 6px; justify-content: space-between; }
-.qty-control { display: flex; align-items: center; gap: 5px; }
+.product-card:hover {
+    border-color: rgba(239,57,78,.35);
+    box-shadow: 0 6px 16px rgba(0,0,0,.08);
+}
+.product-name {
+    font-size: .88rem;
+    font-weight: 600;
+    line-height: 1.4;
+    min-height: 38px;
+}
+.product-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+}
+.qty-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
 .btn {
-    border: 0; border-radius: 9px; font-family: inherit; font-weight: 700; cursor: pointer;
+    border: 0;
+    border-radius: 9px;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
     transition: .15s;
 }
 .btn-small {
-    background: #fff; color: #333; min-width: 30px; height: 30px; padding: 0;
-    border: 1px solid #ddd; font-size: 1rem; display: flex; align-items: center; justify-content: center;
+    background: #fff;
+    color: #333;
+    min-width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.btn-small:hover { border-color: var(--primary); color: var(--primary); }
+.btn-small:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
 .product-quantity {
-    min-width: 32px; height: 30px; display: flex; align-items: center; justify-content: center;
-    border: 1px solid #e0e0e0; border-radius: 8px; background: #fff; font-weight: 800; font-size: .9rem;
+    min-width: 32px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fff;
+    font-weight: 800;
+    font-size: .9rem;
 }
-.btn-orange {
-    width: 30px; height: 30px; background: linear-gradient(135deg, #ff9f1c, #e88b00);
-    color: #fff; border-radius: 8px; font-size: .85rem; display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 3px 10px rgba(255,159,28,.3);
-}
-.btn-orange:hover { filter: brightness(1.08); transform: scale(1.05); }
-.btn-orange.hidden { display: none; }
 
 /* دکمه ثبت نهایی */
 .fixed-bottom {
-    position: sticky; bottom: 14px; z-index: 50; margin-top: 18px;
+    position: sticky;
+    bottom: 14px;
+    z-index: 50;
+    margin-top: 18px;
 }
 .btn-submit {
-    width: 100%; padding: 14px; border: 0; border-radius: 14px;
-    background: linear-gradient(135deg, #ef394e, #d92d42); color: #fff;
-    font-family: inherit; font-size: 1.05rem; font-weight: 800; cursor: pointer;
+    width: 100%;
+    padding: 14px;
+    border: 0;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #ef394e, #d92d42);
+    color: #fff;
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 800;
+    cursor: pointer;
     box-shadow: 0 10px 24px rgba(239,57,78,.28);
 }
-.btn-submit:disabled { background: #bbb; cursor: not-allowed; box-shadow: none; }
+.btn-submit:disabled {
+    background: #bbb;
+    cursor: not-allowed;
+    box-shadow: none;
+}
 .btn-submit:hover:not(:disabled) { filter: brightness(1.05); }
 
 .status-msg {
-    text-align: center; margin-top: 10px; font-size: .9rem; font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+    font-size: .9rem;
+    font-weight: 600;
     min-height: 24px;
 }
 .status-ok { color: #16a34a; }
@@ -166,6 +345,7 @@ body {
 </style>
 </head>
 <body>
+<!-- انیمیشن‌ها در پایین‌ترین لایه -->
 <div class="float-icons" id="floatIcons"></div>
 
 <!-- ===== صفحه ورود ===== -->
@@ -209,25 +389,25 @@ body {
 </div>
 
 <script>
-// ========== انیمیشن ==========
+// ========== انیمیشن (زیر همه چیز) ==========
 function createFloatIcons() {
     const container = document.getElementById("floatIcons");
     const icons = ["٪", "🛒", "📦", "🏷️", "🛍️", "💰", "🎁", "🧈", "🥛", "🍰"];
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 16; i++) {
         const el = document.createElement("div");
         el.className = "float-icon";
         el.textContent = icons[i % icons.length];
         el.style.left = Math.random() * 94 + "%";
-        const duration = 10 + Math.random() * 8;
+        const duration = 11 + Math.random() * 9;
         el.style.animationDuration = duration + "s";
         el.style.animationDelay = (-Math.random() * duration) + "s";
-        el.style.fontSize = (15 + Math.random() * 16) + "px";
+        el.style.fontSize = (14 + Math.random() * 15) + "px";
         container.appendChild(el);
     }
 }
 createFloatIcons();
 
-// ========== محصولات (۴۰ عدد) ==========
+// ========== محصولات ==========
 const products = [
     "روغن آفتابگردان ۱.۸ لیتری", "روغن سرخ‌کردنی ۱.۸ لیتری", "روغن ۱.۳۵ لیتری",
     "ماست پرچرب کاله", "ماست پرچرب پگاه", "ماست پرچرب میهن", "ماست کم‌چرب",
@@ -243,9 +423,7 @@ const products = [
     "مربا آلبالو", "شکلات تخته‌ای", "پفک", "چیپس"
 ];
 
-// تعداد واقعی حدود ۴۸ تا است، برای اطمینان همه را می‌آوریم (اگر کمتر خواستی حذف کن)
-
-const cart = {}; // id → qty
+const cart = {};
 
 // ========== لاگین ==========
 function doLogin() {
@@ -262,7 +440,6 @@ function doLogin() {
     }
 }
 
-// اینتر هم کار کند
 document.addEventListener("keydown", e => {
     if (e.key === "Enter" && document.getElementById("loginPage").style.display !== "none") {
         doLogin();
@@ -293,7 +470,6 @@ function renderProducts() {
                     <div class="product-quantity">${qty.toLocaleString("fa-IR")}</div>
                     <button class="btn btn-small" onclick="changeQty('${id}', 1)">+</button>
                 </div>
-                <button class="btn btn-orange ${qty > 0 ? 'hidden' : ''}" onclick="quickAdd('${id}')" title="فروخته شد">■</button>
             </div>
         `;
         grid.appendChild(card);
@@ -309,18 +485,13 @@ function changeQty(id, delta) {
     renderProducts();
 }
 
-function quickAdd(id) {
-    cart[id] = 1;
-    renderProducts();
-}
-
 function updateSubmitButton() {
     const hasItems = Object.keys(cart).length > 0;
     document.getElementById("btnSubmit").disabled = !hasItems;
 }
 
 // ========== ثبت فروش ==========
-const SHEET_API_URL = "YOUR_GOOGLE_SCRIPT_URL_HERE"; // بعد از دیپلوی اسکریپت اینجا بگذار
+const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbxFhbkvj4OVJaLpQnxpoWOA5tFjAoPvQKXLilO_XaVcUwZCUCozg1UHjMyAnXkMIio/exec";
 
 async function submitSales() {
     const btn = document.getElementById("btnSubmit");
