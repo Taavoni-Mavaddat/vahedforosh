@@ -8,144 +8,186 @@
     <link rel="icon" type="image/png" href="https://cdn.imgurl.ir/uploads/s09750_logo.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
+        
         :root {
             --primary: #ef394e;
             --primary-dark: #d92d42;
         }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: "Vazirmatn", Tahoma, sans-serif;
             background: #f7f7f8;
             color: #202020;
             min-height: 100vh;
         }
+        
         .app-wrapper {
-            max-width: 1100px;
+            max-width: 680px;
             margin: 0 auto;
-            padding: 16px 14px 80px;
+            padding: 14px 12px 90px;
         }
+        
         .top-bar {
             background: linear-gradient(135deg, #ef394e, #d81f3b);
             color: white;
-            border-radius: 18px;
-            padding: 16px 20px;
-            margin-bottom: 18px;
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
-            gap: 14px;
-            box-shadow: 0 10px 28px rgba(239,57,78,.25);
+            gap: 12px;
+            box-shadow: 0 8px 24px rgba(239,57,78,.25);
         }
+        
         .top-bar img {
-            width: 52px;
-            height: 52px;
+            width: 48px;
+            height: 48px;
             border-radius: 12px;
         }
+        
         .top-bar h1 {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 800;
+            line-height: 1.4;
         }
+        
         .section-card {
             background: #fff;
             border: 1px solid #e8e8e8;
             border-radius: 16px;
-            padding: 16px;
-            box-shadow: 0 8px 28px rgba(0,0,0,.06);
-            margin-bottom: 16px;
-        }
-        .section-card h2 {
-            font-size: 1rem;
-            font-weight: 800;
+            padding: 14px;
+            box-shadow: 0 6px 20px rgba(0,0,0,.05);
             margin-bottom: 14px;
+        }
+        
+        .section-card h2 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
+        
         .section-card h2::before {
             content: "";
-            width: 9px;
-            height: 9px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background: var(--primary);
         }
+        
+        /* ===== طراحی ردیفی کالاها ===== */
         .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
-            gap: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
+        
         .product-card {
             border: 1px solid #e8e8e8;
-            border-radius: 12px;
-            padding: 12px;
+            border-radius: 14px;
+            padding: 12px 14px;
             background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
         }
+        
+        .product-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
         .product-name {
-            font-size: .9rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            margin-bottom: 6px;
-            min-height: 42px;
+            margin-bottom: 4px;
+            line-height: 1.35;
         }
+        
         .product-price {
-            font-size: .85rem;
+            font-size: 0.88rem;
             color: var(--primary);
             font-weight: 700;
-            margin-bottom: 10px;
         }
+        
         .qty-control {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 6px;
+            gap: 8px;
+            flex-shrink: 0;
         }
+        
         .btn-small {
             background: #fff;
-            border: 1px solid #ddd;
-            width: 32px;
-            height: 32px;
-            border-radius: 9px;
-            font-size: 1.1rem;
+            border: 1.5px solid #ddd;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            font-size: 1.35rem;
             font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: inherit;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
         }
-        .btn-small:hover {
+        
+        .btn-small:active {
+            background: #fff0f1;
             border-color: var(--primary);
             color: var(--primary);
         }
+        
         .product-quantity {
-            width: 50px;
-            height: 32px;
+            width: 54px;
+            height: 42px;
             text-align: center;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            border: 1.5px solid #ddd;
+            border-radius: 11px;
             font-weight: 800;
+            font-size: 1.1rem;
             font-family: inherit;
             outline: none;
         }
+        
+        .product-quantity:focus {
+            border-color: var(--primary);
+        }
+        
+        /* ===== تلفن ===== */
         .phone-box input {
             width: 100%;
-            padding: 13px 14px;
-            border: 1px solid #ddd;
+            padding: 14px 16px;
+            border: 1.5px solid #ddd;
             border-radius: 12px;
             font-family: inherit;
             font-size: 1rem;
             outline: none;
         }
+        
         .phone-box input:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 4px rgba(239,57,78,.12);
         }
+        
+        /* ===== دکمه‌های پایین ===== */
         .fixed-bottom {
             position: sticky;
-            bottom: 14px;
+            bottom: 12px;
             z-index: 50;
-            margin-top: 20px;
+            margin-top: 18px;
         }
+        
         .btn-main {
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             border: 0;
             border-radius: 14px;
             background: linear-gradient(135deg, #ef394e, #d92d42);
@@ -154,13 +196,20 @@
             font-size: 1.1rem;
             font-weight: 800;
             cursor: pointer;
-            box-shadow: 0 10px 24px rgba(239,57,78,.28);
+            box-shadow: 0 8px 22px rgba(239,57,78,.28);
+            -webkit-tap-highlight-color: transparent;
         }
+        
         .btn-main:disabled {
             background: #bbb;
             cursor: not-allowed;
             box-shadow: none;
         }
+        
+        .btn-main:active:not(:disabled) {
+            transform: scale(0.98);
+        }
+        
         .btn-secondary {
             width: 100%;
             padding: 14px;
@@ -173,55 +222,63 @@
             font-weight: 700;
             cursor: pointer;
             margin-bottom: 10px;
+            -webkit-tap-highlight-color: transparent;
         }
+        
+        /* ===== صفحه فاکتور ===== */
         #invoicePage { display: none; }
+        
         .invoice-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 12px 0;
-            font-size: .9rem;
+            margin: 10px 0;
+            font-size: 0.9rem;
         }
-        .invoice-table th, .invoice-table td {
-            padding: 10px 8px;
+        
+        .invoice-table th, 
+        .invoice-table td {
+            padding: 11px 8px;
             border-bottom: 1px solid #eee;
             text-align: right;
         }
+        
         .invoice-table th {
             background: #f8f8f8;
             font-weight: 700;
         }
+        
         .invoice-total {
             background: #fff5f6;
             border-radius: 12px;
             padding: 14px 16px;
-            margin-top: 16px;
+            margin-top: 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
+        
         .invoice-total span:last-child {
             color: var(--primary);
-            font-size: 1.25rem;
+            font-size: 1.2rem;
         }
+        
         .status-msg {
             text-align: center;
             margin-top: 12px;
             font-weight: 600;
             min-height: 24px;
+            font-size: 0.95rem;
         }
+        
         .status-ok { color: #16a34a; }
         .status-err { color: #d32f2f; }
-        @media (max-width: 600px) {
-            .product-grid { grid-template-columns: 1fr 1fr; }
-            .top-bar h1 { font-size: 1rem; }
-        }
     </style>
 </head>
 <body>
     <div class="app-wrapper">
-        <!-- صفحه انتخاب -->
+        <!-- صفحه انتخاب کالا -->
         <div id="selectPage">
             <div class="top-bar">
                 <img src="https://cdn.imgurl.ir/uploads/s09750_logo.png" alt="لوگو">
@@ -236,7 +293,7 @@
             <div class="section-card">
                 <h2>شماره تلفن مشتری (اختیاری)</h2>
                 <div class="phone-box">
-                    <input type="tel" id="customerPhone" placeholder="شماره تلفن مشتری" maxlength="11">
+                    <input type="tel" id="customerPhone" placeholder="شماره تلفن مشتری" maxlength="11" inputmode="numeric">
                 </div>
             </div>
 
@@ -317,6 +374,8 @@ const products = [
 ];
 
 const cart = {};
+
+// ⚠️ این لینک رو بعد از Deploy جدید، عوض کن
 const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbxFhbkvj4OVJaLpQnxpoWOA5tFjAoPvQKXLilO_XaVcUwZCUCozg1UHjMyAnXkMIio/exec";
 
 function formatPrice(num) {
@@ -326,13 +385,16 @@ function formatPrice(num) {
 function renderProducts() {
     const grid = document.getElementById("productGrid");
     grid.innerHTML = "";
+
     products.forEach(p => {
         const qty = cart[p.id] || 0;
         const card = document.createElement("div");
         card.className = "product-card";
         card.innerHTML = `
-            <div class="product-name">${p.name}</div>
-            <div class="product-price">${formatPrice(p.sale)}</div>
+            <div class="product-info">
+                <div class="product-name">${p.name}</div>
+                <div class="product-price">${formatPrice(p.sale)}</div>
+            </div>
             <div class="qty-control">
                 <button class="btn-small" onclick="changeQty('${p.id}', -1)">−</button>
                 <input type="number" class="product-quantity" id="qty-${p.id}" value="${qty}" min="0"
@@ -342,6 +404,7 @@ function renderProducts() {
         `;
         grid.appendChild(card);
     });
+
     updateReviewButton();
 }
 
@@ -366,6 +429,7 @@ function updateReviewButton() {
 }
 
 function showInvoice() {
+    // همگام‌سازی مقادیر input با cart
     products.forEach(p => {
         const input = document.getElementById("qty-" + p.id);
         if (input) {
@@ -387,6 +451,7 @@ function showInvoice() {
         const qty = cart[id];
         const lineTotal = p.sale * qty;
         total += lineTotal;
+
         const tr = document.createElement("tr");
         tr.innerHTML = `
             <td>${p.name}</td>
@@ -399,7 +464,6 @@ function showInvoice() {
 
     document.getElementById("invoiceTotal").textContent = formatPrice(total);
     document.getElementById("invoicePhone").textContent = phone || "—";
-
     document.getElementById("selectPage").style.display = "none";
     document.getElementById("invoicePage").style.display = "block";
     window.scrollTo(0, 0);
@@ -430,7 +494,7 @@ async function submitSale() {
 
     const phone = document.getElementById("customerPhone").value.trim();
     const now = new Date();
-    const timeStr = now.toLocaleTimeString("fa-IR", {hour: "2-digit", minute: "2-digit"});
+    const timeStr = now.toLocaleTimeString("fa-IR", { hour: "2-digit", minute: "2-digit" });
     const dateStr = now.toLocaleDateString("fa-IR");
 
     const items = [];
@@ -458,16 +522,20 @@ async function submitSale() {
         await fetch(SHEET_API_URL, {
             method: "POST",
             mode: "no-cors",
-            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
             body: JSON.stringify(payload)
         });
 
+        // چون no-cors هستیم، نمی‌تونیم جواب رو بخونیم
+        // پس فرض می‌کنیم ارسال شده و کاربر باید Executions رو چک کنه
         for (let k in cart) delete cart[k];
         document.getElementById("customerPhone").value = "";
 
         msg.className = "status-msg status-ok";
-        msg.textContent = "✅ با موفقیت ثبت شد";
-
+        msg.textContent = "✅ درخواست ارسال شد";
+        
         document.getElementById("btnSold").style.display = "none";
         document.getElementById("btnEdit").style.display = "none";
         document.getElementById("btnNewOrder").style.display = "block";
@@ -475,7 +543,7 @@ async function submitSale() {
     } catch (err) {
         console.error(err);
         msg.className = "status-msg status-err";
-        msg.textContent = "❌ خطا در ثبت. اتصال اینترنت را بررسی کنید";
+        msg.textContent = "❌ خطا در ارسال. اینترنت را بررسی کنید";
         btn.disabled = false;
         btn.textContent = "فروخته شد";
     }
@@ -491,6 +559,7 @@ function startNewOrder() {
     editCart();
 }
 
+// شروع
 renderProducts();
 </script>
 </body>
