@@ -1,0 +1,26 @@
+{
+  "name": "حسابداری گروه مردمی مودّت اردبیل",
+  "short_name": "مودّت اردبیل",
+  "description": "سیستم ثبت فروش گروه مردمی مودّت اردبیل",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ef394e",
+  "orientation": "portrait-primary",
+  "lang": "fa",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "https://cdn.imgurl.ir/uploads/s09750_logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://cdn.imgurl.ir/uploads/s09750_logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
