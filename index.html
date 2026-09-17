@@ -4,31 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#ef394e">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="مودّت اردبیل">
-    <link rel="icon" type="image/png" href="https://cdn.imgurl.ir/uploads/s09750_logo.png">
-    <link rel="apple-touch-icon" href="https://cdn.imgurl.ir/uploads/s09750_logo.png">
     <title>حسابداری گروه مردمی مودّت اردبیل</title>
+    <link rel="icon" type="image/png" href="https://cdn.imgurl.ir/uploads/s09750_logo.png">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
         :root {
             --primary: #ef394e;
             --primary-dark: #d92d42;
-            --shadow: 0 8px 28px rgba(0,0,0,.08);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: "Vazirmatn", Tahoma, sans-serif;
-            background: linear-gradient(180deg, #fff 0%, #f7f7f8 100%);
+            background: #f7f7f8;
             color: #202020;
-            line-height: 1.6;
             min-height: 100vh;
         }
         .app-wrapper {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 16px 14px 70px;
+            padding: 16px 14px 80px;
         }
         .top-bar {
             background: linear-gradient(135deg, #ef394e, #d81f3b);
@@ -55,7 +49,7 @@
             border: 1px solid #e8e8e8;
             border-radius: 16px;
             padding: 16px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 8px 28px rgba(0,0,0,.06);
             margin-bottom: 16px;
         }
         .section-card h2 {
@@ -75,7 +69,7 @@
         }
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
             gap: 12px;
         }
         .product-card {
@@ -83,11 +77,6 @@
             border-radius: 12px;
             padding: 12px;
             background: #fff;
-            transition: .2s;
-        }
-        .product-card:hover {
-            border-color: rgba(239,57,78,.4);
-            box-shadow: 0 6px 16px rgba(0,0,0,.07);
         }
         .product-name {
             font-size: .9rem;
@@ -107,22 +96,19 @@
             justify-content: center;
             gap: 6px;
         }
-        .btn {
-            border: 0;
-            border-radius: 9px;
-            font-family: inherit;
-            font-weight: 700;
-            cursor: pointer;
-        }
         .btn-small {
             background: #fff;
             border: 1px solid #ddd;
             width: 32px;
             height: 32px;
+            border-radius: 9px;
             font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-family: inherit;
         }
         .btn-small:hover {
             border-color: var(--primary);
@@ -137,9 +123,6 @@
             font-weight: 800;
             font-family: inherit;
             outline: none;
-        }
-        .product-quantity:focus {
-            border-color: var(--primary);
         }
         .phone-box input {
             width: 100%;
@@ -191,10 +174,6 @@
             cursor: pointer;
             margin-bottom: 10px;
         }
-        .btn-secondary:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
         #invoicePage { display: none; }
         .invoice-table {
             width: 100%;
@@ -202,8 +181,7 @@
             margin: 12px 0;
             font-size: .9rem;
         }
-        .invoice-table th,
-        .invoice-table td {
+        .invoice-table th, .invoice-table td {
             padding: 10px 8px;
             border-bottom: 1px solid #eee;
             text-align: right;
@@ -243,7 +221,7 @@
 </head>
 <body>
     <div class="app-wrapper">
-        <!-- صفحه انتخاب محصولات -->
+        <!-- صفحه انتخاب -->
         <div id="selectPage">
             <div class="top-bar">
                 <img src="https://cdn.imgurl.ir/uploads/s09750_logo.png" alt="لوگو">
@@ -256,9 +234,9 @@
             </div>
 
             <div class="section-card">
-                <h2>شماره تلفن مشتری</h2>
+                <h2>شماره تلفن مشتری (اختیاری)</h2>
                 <div class="phone-box">
-                    <input type="tel" id="customerPhone" placeholder="مثال: ۰۹۱۴xxxxxxx" maxlength="11">
+                    <input type="tel" id="customerPhone" placeholder="شماره تلفن مشتری" maxlength="11">
                 </div>
             </div>
 
@@ -267,7 +245,7 @@
             </div>
         </div>
 
-        <!-- صفحه تأیید فاکتور -->
+        <!-- صفحه فاکتور -->
         <div id="invoicePage">
             <div class="top-bar">
                 <img src="https://cdn.imgurl.ir/uploads/s09750_logo.png" alt="لوگو">
@@ -298,16 +276,16 @@
                 </div>
             </div>
 
-            <div class="fixed-bottom">
-                <button class="btn-secondary" onclick="editCart()">ویرایش سبد</button>
+            <div class="fixed-bottom" id="invoiceButtons">
+                <button class="btn-secondary" id="btnEdit" onclick="editCart()">ویرایش سبد</button>
                 <button class="btn-main" id="btnSold" onclick="submitSale()">فروخته شد</button>
+                <button class="btn-main" id="btnNewOrder" style="display:none;" onclick="startNewOrder()">ثبت سفارش جدید</button>
                 <div class="status-msg" id="statusMsg"></div>
             </div>
         </div>
     </div>
 
 <script>
-// ========== محصولات (قیمت فروش برای نمایش + قیمت خرید فقط برای ارسال به شیت) ==========
 const products = [
     { id: "p1",  name: "ایشکا طرح",              sale: 28000,  buy: 23000 },
     { id: "p2",  name: "ایشکا تکی",              sale: 45000,  buy: 23000 },
@@ -338,14 +316,13 @@ const products = [
     { id: "p27", name: "پک پنج روز",             sale: 355000, buy: 290000 }
 ];
 
-const cart = {}; // { id: qty }
+const cart = {};
+const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbxFhbkvj4OVJaLpQnxpoWOA5tFjAoPvQKXLilO_XaVcUwZCUCozg1UHjMyAnXkMIio/exec";
 
-// فرمت عدد به فارسی با جداکننده
 function formatPrice(num) {
-    return num.toLocaleString("fa-IR") + " تومان";
+    return Number(num).toLocaleString("fa-IR") + " تومان";
 }
 
-// رندر محصولات
 function renderProducts() {
     const grid = document.getElementById("productGrid");
     grid.innerHTML = "";
@@ -357,12 +334,10 @@ function renderProducts() {
             <div class="product-name">${p.name}</div>
             <div class="product-price">${formatPrice(p.sale)}</div>
             <div class="qty-control">
-                <button class="btn btn-small" onclick="changeQty('${p.id}', -1)">−</button>
-                <input type="number" class="product-quantity" id="qty-${p.id}"
-                       value="${qty}" min="0"
-                       onchange="setQty('${p.id}', this.value)"
-                       onfocus="this.select()">
-                <button class="btn btn-small" onclick="changeQty('${p.id}', 1)">+</button>
+                <button class="btn-small" onclick="changeQty('${p.id}', -1)">−</button>
+                <input type="number" class="product-quantity" id="qty-${p.id}" value="${qty}" min="0"
+                       onchange="setQty('${p.id}', this.value)" onfocus="this.select()">
+                <button class="btn-small" onclick="changeQty('${p.id}', 1)">+</button>
             </div>
         `;
         grid.appendChild(card);
@@ -387,13 +362,10 @@ function setQty(id, value) {
 }
 
 function updateReviewButton() {
-    const hasItems = Object.keys(cart).length > 0;
-    document.getElementById("btnReview").disabled = !hasItems;
+    document.getElementById("btnReview").disabled = Object.keys(cart).length === 0;
 }
 
-// نمایش فاکتور
 function showInvoice() {
-    // خواندن مقادیر فعلی inputها
     products.forEach(p => {
         const input = document.getElementById("qty-" + p.id);
         if (input) {
@@ -403,22 +375,18 @@ function showInvoice() {
         }
     });
 
-    if (Object.keys(cart).length === 0) {
-        updateReviewButton();
-        return;
-    }
+    if (Object.keys(cart).length === 0) return;
 
     const phone = document.getElementById("customerPhone").value.trim();
     const tbody = document.getElementById("invoiceBody");
     tbody.innerHTML = "";
-
     let total = 0;
+
     Object.keys(cart).forEach(id => {
         const p = products.find(x => x.id === id);
         const qty = cart[id];
         const lineTotal = p.sale * qty;
         total += lineTotal;
-
         const tr = document.createElement("tr");
         tr.innerHTML = `
             <td>${p.name}</td>
@@ -435,6 +403,14 @@ function showInvoice() {
     document.getElementById("selectPage").style.display = "none";
     document.getElementById("invoicePage").style.display = "block";
     window.scrollTo(0, 0);
+
+    // ریست دکمه‌ها
+    document.getElementById("btnSold").style.display = "block";
+    document.getElementById("btnSold").disabled = false;
+    document.getElementById("btnSold").textContent = "فروخته شد";
+    document.getElementById("btnEdit").style.display = "block";
+    document.getElementById("btnNewOrder").style.display = "none";
+    document.getElementById("statusMsg").textContent = "";
 }
 
 function editCart() {
@@ -442,9 +418,6 @@ function editCart() {
     document.getElementById("selectPage").style.display = "block";
     renderProducts();
 }
-
-// ارسال به گوگل‌شیت
-const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbxFhbkvj4OVJaLpQnxpoWOA5tFjAoPvQKXLilO_XaVcUwZCUCozg1UHjMyAnXkMIio/exec";
 
 async function submitSale() {
     const btn = document.getElementById("btnSold");
@@ -457,7 +430,7 @@ async function submitSale() {
 
     const phone = document.getElementById("customerPhone").value.trim();
     const now = new Date();
-    const timeStr = now.toLocaleTimeString("fa-IR", { hour: "2-digit", minute: "2-digit" });
+    const timeStr = now.toLocaleTimeString("fa-IR", {hour: "2-digit", minute: "2-digit"});
     const dateStr = now.toLocaleDateString("fa-IR");
 
     const items = [];
@@ -467,10 +440,8 @@ async function submitSale() {
     Object.keys(cart).forEach(id => {
         const p = products.find(x => x.id === id);
         const qty = cart[id];
-        const lineSale = p.sale * qty;
-        const lineProfit = (p.sale - p.buy) * qty;
-        totalSale += lineSale;
-        totalProfit += lineProfit;
+        totalSale += p.sale * qty;
+        totalProfit += (p.sale - p.buy) * qty;
         items.push({ name: p.name, qty: qty });
     });
 
@@ -491,18 +462,15 @@ async function submitSale() {
             body: JSON.stringify(payload)
         });
 
-        // پاک کردن سبد
         for (let k in cart) delete cart[k];
         document.getElementById("customerPhone").value = "";
 
         msg.className = "status-msg status-ok";
         msg.textContent = "✅ با موفقیت ثبت شد";
-        btn.textContent = "فروخته شد";
 
-        setTimeout(() => {
-            msg.textContent = "";
-            editCart(); // برگشت به صفحه اصلی
-        }, 2500);
+        document.getElementById("btnSold").style.display = "none";
+        document.getElementById("btnEdit").style.display = "none";
+        document.getElementById("btnNewOrder").style.display = "block";
 
     } catch (err) {
         console.error(err);
@@ -513,7 +481,16 @@ async function submitSale() {
     }
 }
 
-// شروع
+function startNewOrder() {
+    document.getElementById("btnNewOrder").style.display = "none";
+    document.getElementById("btnSold").style.display = "block";
+    document.getElementById("btnSold").disabled = false;
+    document.getElementById("btnSold").textContent = "فروخته شد";
+    document.getElementById("btnEdit").style.display = "block";
+    document.getElementById("statusMsg").textContent = "";
+    editCart();
+}
+
 renderProducts();
 </script>
 </body>
