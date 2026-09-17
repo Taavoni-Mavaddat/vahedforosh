@@ -3,10 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" href="https://cdn.imgurl.ir/uploads/s09750_logo.png">
+
+<!-- آیکون سایت -->
+<link rel="icon" type="image/png" sizes="192x192"
+      href="https://cdn.imgurl.ir/uploads/s09750_logo.png">
+
+<!-- PWA -->
+<link rel="manifest" href="./manifest.json">
+
+<meta name="theme-color" content="#ef394e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="حسابداری مودّت">
+
+<link rel="apple-touch-icon"
+      href="https://cdn.imgurl.ir/uploads/s09750_logo.png">
+
 <title>حسابداری گروه مردمی مودّت اردبیل</title>
+
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+
 :root {
     --bg: #f7f7f8;
     --card: #fff;
@@ -17,8 +36,17 @@
     --border: #e6e6e6;
     --shadow: 0 8px 28px rgba(0,0,0,.08);
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { min-height: 100%; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100%;
+}
+
 body {
     font-family: "Vazirmatn", "B Nazanin", "Tahoma", sans-serif;
     background: linear-gradient(180deg, #fff 0%, #f7f7f8 45%, #f3f3f4 100%);
@@ -34,6 +62,7 @@ body {
     z-index: 0;
     overflow: hidden;
 }
+
 .float-icon {
     position: absolute;
     font-size: 20px;
@@ -42,11 +71,25 @@ body {
     animation: floatUp linear infinite;
     user-select: none;
 }
+
 @keyframes floatUp {
-    0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-    10%  { opacity: 0.22; }
-    90%  { opacity: 0.22; }
-    100% { transform: translateY(-10vh) rotate(25deg); opacity: 0; }
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.22;
+    }
+
+    90% {
+        opacity: 0.22;
+    }
+
+    100% {
+        transform: translateY(-10vh) rotate(25deg);
+        opacity: 0;
+    }
 }
 
 .app-wrapper {
@@ -58,7 +101,8 @@ body {
     z-index: 10;
 }
 
-/* ===== لاگین ===== */
+/* ================= LOGIN ================= */
+
 .login-box {
     max-width: 380px;
     margin: 80px auto;
@@ -71,23 +115,28 @@ body {
     position: relative;
     z-index: 10;
 }
+
 .login-box img {
     width: 72px;
     height: 72px;
     margin-bottom: 12px;
     border-radius: 14px;
+    object-fit: contain;
 }
+
 .login-box h1 {
     font-size: 1.25rem;
     font-weight: 800;
     margin-bottom: 6px;
     color: var(--primary);
 }
+
 .login-box p {
     font-size: .85rem;
     color: var(--muted);
     margin-bottom: 22px;
 }
+
 .login-box input {
     width: 100%;
     padding: 12px 14px;
@@ -98,10 +147,12 @@ body {
     margin-bottom: 12px;
     outline: none;
 }
+
 .login-box input:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 4px rgba(239,57,78,.1);
 }
+
 .btn-login {
     width: 100%;
     padding: 13px;
@@ -115,7 +166,11 @@ body {
     cursor: pointer;
     box-shadow: 0 8px 20px rgba(239,57,78,.25);
 }
-.btn-login:hover { filter: brightness(1.05); }
+
+.btn-login:hover {
+    filter: brightness(1.05);
+}
+
 .login-error {
     color: #d32f2f;
     font-size: .85rem;
@@ -123,7 +178,8 @@ body {
     display: none;
 }
 
-/* ===== هدر ===== */
+/* ================= HEADER ================= */
+
 .top-bar {
     display: flex;
     flex-wrap: wrap;
@@ -132,6 +188,7 @@ body {
     margin-bottom: 16px;
     align-items: stretch;
 }
+
 .title-box {
     position: relative;
     overflow: hidden;
@@ -142,9 +199,15 @@ body {
     align-items: center;
     justify-content: center;
     color: #fff;
-    background: linear-gradient(135deg, #ef394e 0%, #d81f3b 55%, #b91530 100%);
+    background: linear-gradient(
+        135deg,
+        #ef394e 0%,
+        #d81f3b 55%,
+        #b91530 100%
+    );
     box-shadow: 0 10px 28px rgba(239,57,78,.25);
 }
+
 .site-logo {
     width: 56px;
     height: 56px;
@@ -152,6 +215,7 @@ body {
     margin-left: 12px;
     border-radius: 12px;
 }
+
 .title-box::before {
     content: "";
     position: absolute;
@@ -162,6 +226,7 @@ body {
     top: -80px;
     right: -50px;
 }
+
 .title-box::after {
     content: "";
     position: absolute;
@@ -169,8 +234,14 @@ body {
     top: 0;
     width: 5px;
     height: 100%;
-    background: linear-gradient(180deg, #ff9f1c 0%, #ef394e 50%, #facc15 100%);
+    background: linear-gradient(
+        180deg,
+        #ff9f1c 0%,
+        #ef394e 50%,
+        #facc15 100%
+    );
 }
+
 .title-text {
     position: relative;
     z-index: 1;
@@ -178,6 +249,7 @@ body {
     font-weight: 800;
     text-align: center;
 }
+
 .info-box {
     flex: 1 1 220px;
     border-radius: 16px;
@@ -187,19 +259,25 @@ body {
     box-shadow: var(--shadow);
     font-size: .85rem;
 }
+
 .info-row {
     display: flex;
     justify-content: space-between;
     padding: 3px 0;
     border-bottom: 1px solid #f1f1f1;
 }
-.info-row:last-child { border-bottom: 0; }
+
+.info-row:last-child {
+    border-bottom: 0;
+}
+
 .info-row span:last-child {
     font-weight: 800;
     color: var(--primary);
 }
 
-/* ===== محصولات ===== */
+/* ================= PRODUCTS ================= */
+
 .section-card {
     background: #fff;
     border: 1px solid #e8e8e8;
@@ -210,6 +288,7 @@ body {
     position: relative;
     z-index: 5;
 }
+
 .section-card h2 {
     font-size: 1rem;
     font-weight: 800;
@@ -218,6 +297,7 @@ body {
     align-items: center;
     gap: 8px;
 }
+
 .section-card h2::before {
     content: "";
     width: 9px;
@@ -226,11 +306,13 @@ body {
     background: var(--primary);
     box-shadow: 0 0 0 4px rgba(239,57,78,.12);
 }
+
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
     gap: 10px;
 }
+
 .product-card {
     border: 1px solid #e8e8e8;
     border-radius: 12px;
@@ -241,27 +323,32 @@ body {
     gap: 8px;
     transition: .2s;
 }
+
 .product-card:hover {
     border-color: rgba(239,57,78,.35);
     box-shadow: 0 6px 16px rgba(0,0,0,.08);
 }
+
 .product-name {
     font-size: .88rem;
     font-weight: 600;
     line-height: 1.4;
     min-height: 38px;
 }
+
 .product-actions {
     display: flex;
     align-items: center;
     gap: 6px;
     justify-content: center;
 }
+
 .qty-control {
     display: flex;
     align-items: center;
     gap: 5px;
 }
+
 .btn {
     border: 0;
     border-radius: 9px;
@@ -270,6 +357,7 @@ body {
     cursor: pointer;
     transition: .15s;
 }
+
 .btn-small {
     background: #fff;
     color: #333;
@@ -282,12 +370,12 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 .btn-small:hover {
     border-color: var(--primary);
     color: var(--primary);
 }
 
-/* عدد قابل ویرایش */
 .product-quantity {
     width: 48px;
     height: 30px;
@@ -300,18 +388,21 @@ body {
     font-family: inherit;
     outline: none;
 }
+
 .product-quantity:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(239,57,78,.12);
 }
 
-/* دکمه ثبت نهایی */
+/* ================= SUBMIT ================= */
+
 .fixed-bottom {
     position: sticky;
     bottom: 14px;
     z-index: 50;
     margin-top: 18px;
 }
+
 .btn-submit {
     width: 100%;
     padding: 14px;
@@ -325,12 +416,16 @@ body {
     cursor: pointer;
     box-shadow: 0 10px 24px rgba(239,57,78,.28);
 }
+
 .btn-submit:disabled {
     background: #bbb;
     cursor: not-allowed;
     box-shadow: none;
 }
-.btn-submit:hover:not(:disabled) { filter: brightness(1.05); }
+
+.btn-submit:hover:not(:disabled) {
+    filter: brightness(1.05);
+}
 
 .status-msg {
     text-align: center;
@@ -339,80 +434,257 @@ body {
     font-weight: 600;
     min-height: 24px;
 }
-.status-ok { color: #16a34a; }
-.status-err { color: #d32f2f; }
+
+.status-ok {
+    color: #16a34a;
+}
+
+.status-err {
+    color: #d32f2f;
+}
+
+/* ================= MOBILE ================= */
 
 @media (max-width: 600px) {
-    .product-grid { grid-template-columns: 1fr 1fr; }
-    .title-text { font-size: 1.05rem; }
-    .site-logo { width: 46px; height: 46px; }
+
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .title-text {
+        font-size: 1.05rem;
+    }
+
+    .site-logo {
+        width: 46px;
+        height: 46px;
+    }
+
 }
+
 </style>
 </head>
+
 <body>
+
 <div class="float-icons" id="floatIcons"></div>
 
-<!-- ===== صفحه ورود ===== -->
+<!-- ================= LOGIN ================= -->
+
 <div id="loginPage">
+
     <div class="login-box">
-        <img src="https://cdn.imgurl.ir/uploads/s09750_logo.png" alt="لوگو">
+
+        <img
+            src="https://cdn.imgurl.ir/uploads/s09750_logo.png"
+            alt="لوگو"
+        >
+
         <h1>حسابداری مودّت اردبیل</h1>
+
         <p>ورود به سیستم ثبت فروش</p>
-        <input type="text" id="username" placeholder="نام کاربری" autocomplete="username">
-        <input type="password" id="password" placeholder="رمز عبور" autocomplete="current-password">
-        <button class="btn-login" onclick="doLogin()">ورود</button>
-        <div class="login-error" id="loginError">نام کاربری یا رمز عبور اشتباه است</div>
+
+        <!-- فرم واقعی برای تشخیص بهتر توسط Chrome Password Manager -->
+        <form id="loginForm" autocomplete="on">
+
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="نام کاربری"
+                autocomplete="username"
+                autocapitalize="none"
+                spellcheck="false"
+            >
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="رمز عبور"
+                autocomplete="current-password"
+            >
+
+            <button
+                type="submit"
+                class="btn-login"
+            >
+                ورود
+            </button>
+
+        </form>
+
+        <div class="login-error" id="loginError">
+            نام کاربری یا رمز عبور اشتباه است
+        </div>
+
     </div>
+
 </div>
 
-<!-- ===== صفحه اصلی ===== -->
+<!-- ================= MAIN ================= -->
+
 <div id="mainPage" style="display:none;">
+
     <div class="app-wrapper">
+
         <div class="top-bar">
+
             <div class="title-box">
-                <img src="https://cdn.imgurl.ir/uploads/s09750_logo.png" alt="لوگو" class="site-logo">
-                <div class="title-text">حسابداری گروه مردمی مودّت اردبیل</div>
+
+                <img
+                    src="https://cdn.imgurl.ir/uploads/s09750_logo.png"
+                    alt="لوگو"
+                    class="site-logo"
+                >
+
+                <div class="title-text">
+                    حسابداری گروه مردمی مودّت اردبیل
+                </div>
+
             </div>
+
             <div class="info-box">
-                <div class="info-row"><span>تاریخ:</span><span id="liveDate"></span></div>
-                <div class="info-row"><span>ساعت:</span><span id="liveTime"></span></div>
-                <div class="info-row"><span>کاربر:</span><span>مودت</span></div>
+
+                <div class="info-row">
+                    <span>تاریخ:</span>
+                    <span id="liveDate"></span>
+                </div>
+
+                <div class="info-row">
+                    <span>ساعت:</span>
+                    <span id="liveTime"></span>
+                </div>
+
+                <div class="info-row">
+                    <span>کاربر:</span>
+                    <span>مودت</span>
+                </div>
+
             </div>
+
         </div>
 
         <div class="section-card">
+
             <h2>لیست کالاها (ثبت فروش)</h2>
-            <div class="product-grid" id="productGrid"></div>
+
+            <div
+                class="product-grid"
+                id="productGrid"
+            ></div>
+
         </div>
 
         <div class="fixed-bottom">
-            <button class="btn-submit" id="btnSubmit" disabled onclick="submitSales()">ثبت اطلاعات فروخته‌شده</button>
-            <div class="status-msg" id="statusMsg"></div>
+
+            <button
+                class="btn-submit"
+                id="btnSubmit"
+                disabled
+                onclick="submitSales()"
+            >
+                ثبت اطلاعات فروخته‌شده
+            </button>
+
+            <div
+                class="status-msg"
+                id="statusMsg"
+            ></div>
+
         </div>
+
     </div>
+
 </div>
 
+
 <script>
-// ========== انیمیشن ==========
-function createFloatIcons() {
-    const container = document.getElementById("floatIcons");
-    const icons = ["٪", "🛒", "📦", "🏷️", "🛍️", "💰", "🎁", "🧈", "🥛", "🍰"];
-    for (let i = 0; i < 16; i++) {
-        const el = document.createElement("div");
-        el.className = "float-icon";
-        el.textContent = icons[i % icons.length];
-        el.style.left = Math.random() * 94 + "%";
-        const duration = 11 + Math.random() * 9;
-        el.style.animationDuration = duration + "s";
-        el.style.animationDelay = (-Math.random() * duration) + "s";
-        el.style.fontSize = (14 + Math.random() * 15) + "px";
-        container.appendChild(el);
-    }
+
+/* =====================================================
+   PWA SERVICE WORKER
+===================================================== */
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", function () {
+
+        navigator.serviceWorker
+            .register("./service-worker.js")
+            .then(function () {
+                console.log("Service Worker ثبت شد");
+            })
+            .catch(function (error) {
+                console.log("Service Worker Error:", error);
+            });
+
+    });
+
 }
+
+
+/* =====================================================
+   انیمیشن
+===================================================== */
+
+function createFloatIcons() {
+
+    const container =
+        document.getElementById("floatIcons");
+
+    const icons = [
+        "٪",
+        "🛒",
+        "📦",
+        "🏷️",
+        "🛍️",
+        "💰",
+        "🎁",
+        "🧈",
+        "🥛",
+        "🍰"
+    ];
+
+    for (let i = 0; i < 16; i++) {
+
+        const el =
+            document.createElement("div");
+
+        el.className = "float-icon";
+
+        el.textContent =
+            icons[i % icons.length];
+
+        el.style.left =
+            Math.random() * 94 + "%";
+
+        const duration =
+            11 + Math.random() * 9;
+
+        el.style.animationDuration =
+            duration + "s";
+
+        el.style.animationDelay =
+            (-Math.random() * duration) + "s";
+
+        el.style.fontSize =
+            (14 + Math.random() * 15) + "px";
+
+        container.appendChild(el);
+
+    }
+
+}
+
 createFloatIcons();
 
-// ========== محصولات جدید ==========
+
+/* =====================================================
+   محصولات
+===================================================== */
+
 const products = [
+
     "معجون",
     "کلوچه",
     "کلوچه طرح",
@@ -436,154 +708,622 @@ const products = [
     "زیتون بی هسته",
     "روغن زیتون ساشه ای",
     "لواشک"
+
 ];
+
 
 const cart = {};
 
-// ========== لاگین (مودت / مودت) ==========
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
 function doLogin() {
-    const u = document.getElementById("username").value.trim();
-    const p = document.getElementById("password").value.trim();
+
+    const u =
+        document
+        .getElementById("username")
+        .value
+        .trim();
+
+    const p =
+        document
+        .getElementById("password")
+        .value
+        .trim();
+
+
     if (u === "مودت" && p === "مودت") {
-        document.getElementById("loginPage").style.display = "none";
-        document.getElementById("mainPage").style.display = "block";
+
+        /*
+         * ورود موفق روی همین دستگاه حفظ می‌شود.
+         * بنابراین دفعه بعد لازم نیست دوباره وارد شود.
+         */
+
+        localStorage.setItem(
+            "modatLoggedIn",
+            "true"
+        );
+
+
+        document
+            .getElementById("loginPage")
+            .style.display = "none";
+
+
+        document
+            .getElementById("mainPage")
+            .style.display = "block";
+
+
+        document
+            .getElementById("loginError")
+            .style.display = "none";
+
+
         renderProducts();
+
         updateClock();
-        setInterval(updateClock, 1000);
-    } else {
-        document.getElementById("loginError").style.display = "block";
+
+        setInterval(
+            updateClock,
+            1000
+        );
+
+
+        /*
+         * کمک به Chrome Password Manager
+         */
+        document
+            .getElementById("password")
+            .blur();
+
     }
+
+    else {
+
+        document
+            .getElementById("loginError")
+            .style.display = "block";
+
+    }
+
 }
 
-document.addEventListener("keydown", e => {
-    if (e.key === "Enter" && document.getElementById("loginPage").style.display !== "none") {
-        doLogin();
-    }
-});
 
-// ========== ساعت ==========
+/* =====================================================
+   بررسی ورود قبلی
+===================================================== */
+
+function checkSavedLogin() {
+
+    const saved =
+        localStorage.getItem(
+            "modatLoggedIn"
+        );
+
+
+    if (saved === "true") {
+
+        document
+            .getElementById("loginPage")
+            .style.display = "none";
+
+
+        document
+            .getElementById("mainPage")
+            .style.display = "block";
+
+
+        renderProducts();
+
+        updateClock();
+
+        setInterval(
+            updateClock,
+            1000
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   فرم ورود
+===================================================== */
+
+document
+    .getElementById("loginForm")
+    .addEventListener(
+        "submit",
+        function (e) {
+
+            e.preventDefault();
+
+            doLogin();
+
+        }
+    );
+
+
+/* =====================================================
+   Enter
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function (e) {
+
+        if (
+            e.key === "Enter" &&
+            document
+                .getElementById("loginPage")
+                .style.display !== "none"
+        ) {
+
+            doLogin();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ساعت
+===================================================== */
+
 function updateClock() {
-    const now = new Date();
-    document.getElementById("liveDate").innerText = now.toLocaleDateString("fa-IR");
-    document.getElementById("liveTime").innerText = now.toLocaleTimeString("fa-IR", {hour: "2-digit", minute: "2-digit"});
+
+    const now =
+        new Date();
+
+
+    document
+        .getElementById("liveDate")
+        .innerText =
+        now.toLocaleDateString(
+            "fa-IR"
+        );
+
+
+    document
+        .getElementById("liveTime")
+        .innerText =
+        now.toLocaleTimeString(
+            "fa-IR",
+            {
+                hour: "2-digit",
+                minute: "2-digit"
+            }
+        );
+
 }
 
-// ========== رندر محصولات ==========
+
+/* =====================================================
+   رندر محصولات
+===================================================== */
+
 function renderProducts() {
-    const grid = document.getElementById("productGrid");
+
+    const grid =
+        document.getElementById(
+            "productGrid"
+        );
+
+
     grid.innerHTML = "";
-    products.forEach((name, idx) => {
-        const id = "p" + idx;
-        const qty = cart[id] || 0;
-        const card = document.createElement("div");
-        card.className = "product-card";
-        card.innerHTML = `
-            <div class="product-name">${name}</div>
-            <div class="product-actions">
-                <div class="qty-control">
-                    <button class="btn btn-small" onclick="changeQty('${id}', -1)">−</button>
-                    <input type="number" class="product-quantity" id="qty-${id}" 
-                           value="${qty}" min="0" 
-                           onchange="setQty('${id}', this.value)"
-                           onfocus="this.select()">
-                    <button class="btn btn-small" onclick="changeQty('${id}', 1)">+</button>
+
+
+    products.forEach(
+        function (name, idx) {
+
+            const id =
+                "p" + idx;
+
+
+            const qty =
+                cart[id] || 0;
+
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "product-card";
+
+
+            card.innerHTML = `
+
+                <div class="product-name">
+                    ${name}
                 </div>
-            </div>
-        `;
-        grid.appendChild(card);
-    });
+
+                <div class="product-actions">
+
+                    <div class="qty-control">
+
+                        <button
+                            class="btn btn-small"
+                            onclick="changeQty('${id}', -1)"
+                        >
+                            −
+                        </button>
+
+                        <input
+                            type="number"
+                            class="product-quantity"
+                            id="qty-${id}"
+                            value="${qty}"
+                            min="0"
+                            onchange="setQty('${id}', this.value)"
+                            onfocus="this.select()"
+                        >
+
+                        <button
+                            class="btn btn-small"
+                            onclick="changeQty('${id}', 1)"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            grid.appendChild(card);
+
+        }
+    );
+
+
     updateSubmitButton();
+
 }
+
+
+/* =====================================================
+   تغییر تعداد
+===================================================== */
 
 function changeQty(id, delta) {
-    let qty = (cart[id] || 0) + delta;
-    if (qty < 0) qty = 0;
-    if (qty === 0) delete cart[id];
-    else cart[id] = qty;
+
+    let qty =
+        (cart[id] || 0) + delta;
+
+
+    if (qty < 0) {
+        qty = 0;
+    }
+
+
+    if (qty === 0) {
+
+        delete cart[id];
+
+    }
+
+    else {
+
+        cart[id] = qty;
+
+    }
+
+
     renderProducts();
+
 }
+
+
+/* =====================================================
+   مقدار دستی
+===================================================== */
 
 function setQty(id, value) {
-    let qty = parseInt(value) || 0;
-    if (qty < 0) qty = 0;
-    if (qty === 0) delete cart[id];
-    else cart[id] = qty;
+
+    let qty =
+        parseInt(value) || 0;
+
+
+    if (qty < 0) {
+        qty = 0;
+    }
+
+
+    if (qty === 0) {
+
+        delete cart[id];
+
+    }
+
+    else {
+
+        cart[id] = qty;
+
+    }
+
+
     updateSubmitButton();
+
 }
+
+
+/* =====================================================
+   دکمه ثبت
+===================================================== */
 
 function updateSubmitButton() {
-    const hasItems = Object.keys(cart).length > 0;
-    document.getElementById("btnSubmit").disabled = !hasItems;
+
+    const hasItems =
+        Object.keys(cart).length > 0;
+
+
+    document
+        .getElementById("btnSubmit")
+        .disabled =
+        !hasItems;
+
 }
 
-// ========== ثبت فروش ==========
-const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbxFhbkvj4OVJaLpQnxpoWOA5tFjAoPvQKXLilO_XaVcUwZCUCozg1UHjMyAnXkMIio/exec";
+
+/* =====================================================
+   GOOGLE SHEETS
+===================================================== */
+
+const SHEET_API_URL =
+"https://script.google.com/macros/s/AKfycbxFhbkvj4OVJaLpQnxpoWOA5tFjAoPvQKXLilO_XaVcUwZCUCozg1UHjMyAnXkMIio/exec";
+
+
+/* =====================================================
+   ثبت فروش
+===================================================== */
 
 async function submitSales() {
-    const btn = document.getElementById("btnSubmit");
-    const msg = document.getElementById("statusMsg");
-    if (Object.keys(cart).length === 0) return;
 
-    // قبل از ارسال، مقادیر inputها را هم بخوان (اگر کاربر دستی نوشته باشد)
-    products.forEach((_, idx) => {
-        const id = "p" + idx;
-        const input = document.getElementById("qty-" + id);
-        if (input) {
-            const val = parseInt(input.value) || 0;
-            if (val > 0) cart[id] = val;
-            else delete cart[id];
-        }
-    });
+    const btn =
+        document.getElementById(
+            "btnSubmit"
+        );
 
-    if (Object.keys(cart).length === 0) {
-        updateSubmitButton();
+
+    const msg =
+        document.getElementById(
+            "statusMsg"
+        );
+
+
+    if (
+        Object.keys(cart).length === 0
+    ) {
+
         return;
+
     }
+
+
+    /* خواندن مقادیر دستی */
+
+    products.forEach(
+        function (_, idx) {
+
+            const id =
+                "p" + idx;
+
+
+            const input =
+                document.getElementById(
+                    "qty-" + id
+                );
+
+
+            if (input) {
+
+                const val =
+                    parseInt(
+                        input.value
+                    ) || 0;
+
+
+                if (val > 0) {
+
+                    cart[id] = val;
+
+                }
+
+                else {
+
+                    delete cart[id];
+
+                }
+
+            }
+
+        }
+    );
+
+
+    if (
+        Object.keys(cart).length === 0
+    ) {
+
+        updateSubmitButton();
+
+        return;
+
+    }
+
 
     btn.disabled = true;
-    btn.textContent = "⏳ در حال ثبت...";
-    msg.className = "status-msg";
+
+    btn.textContent =
+        "⏳ در حال ثبت...";
+
+
+    msg.className =
+        "status-msg";
+
+
     msg.textContent = "";
 
-    const now = new Date();
-    const timeStr = now.toLocaleTimeString("fa-IR", {hour: "2-digit", minute: "2-digit"});
-    const dateStr = now.toLocaleDateString("fa-IR");
+
+    const now =
+        new Date();
+
+
+    const timeStr =
+        now.toLocaleTimeString(
+            "fa-IR",
+            {
+                hour: "2-digit",
+                minute: "2-digit"
+            }
+        );
+
+
+    const dateStr =
+        now.toLocaleDateString(
+            "fa-IR"
+        );
+
 
     const items = [];
-    Object.keys(cart).forEach(id => {
-        const idx = parseInt(id.replace("p", ""));
-        items.push({ name: products[idx], qty: cart[id] });
-    });
+
+
+    Object.keys(cart).forEach(
+        function (id) {
+
+            const idx =
+                parseInt(
+                    id.replace("p", "")
+                );
+
+
+            items.push({
+
+                name:
+                    products[idx],
+
+                qty:
+                    cart[id]
+
+            });
+
+        }
+    );
+
 
     const payload = {
-        time: timeStr,
-        date: dateStr,
-        items: items
+
+        time:
+            timeStr,
+
+        date:
+            dateStr,
+
+        items:
+            items
+
     };
 
-    try {
-        await fetch(SHEET_API_URL, {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "text/plain;charset=utf-8" },
-            body: JSON.stringify(payload)
-        });
 
-        for (let k in cart) delete cart[k];
+    try {
+
+        await fetch(
+            SHEET_API_URL,
+            {
+
+                method: "POST",
+
+                mode: "no-cors",
+
+                headers: {
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+                },
+
+                body:
+                    JSON.stringify(payload)
+
+            }
+        );
+
+
+        for (
+            let k in cart
+        ) {
+
+            delete cart[k];
+
+        }
+
+
         renderProducts();
-        msg.className = "status-msg status-ok";
-        msg.textContent = "✅ با موفقیت ثبت شد";
-        btn.textContent = "ثبت اطلاعات فروخته‌شده";
-        setTimeout(() => { msg.textContent = ""; }, 4000);
-    } catch (err) {
-        console.error(err);
-        msg.className = "status-msg status-err";
-        msg.textContent = "❌ خطا در ثبت. اتصال اینترنت را بررسی کنید";
-        btn.disabled = false;
-        btn.textContent = "ثبت اطلاعات فروخته‌شده";
+
+
+        msg.className =
+            "status-msg status-ok";
+
+
+        msg.textContent =
+            "✅ با موفقیت ثبت شد";
+
+
+        btn.textContent =
+            "ثبت اطلاعات فروخته‌شده";
+
+
+        setTimeout(
+            function () {
+
+                msg.textContent = "";
+
+            },
+            4000
+        );
+
+
     }
+
+    catch (err) {
+
+        console.error(err);
+
+
+        msg.className =
+            "status-msg status-err";
+
+
+        msg.textContent =
+            "❌ خطا در ثبت. اتصال اینترنت را بررسی کنید";
+
+
+        btn.disabled = false;
+
+
+        btn.textContent =
+            "ثبت اطلاعات فروخته‌شده";
+
+    }
+
 }
+
+
+/* =====================================================
+   اجرای اولیه
+===================================================== */
+
+checkSavedLogin();
+
 </script>
+
 </body>
 </html>
-
